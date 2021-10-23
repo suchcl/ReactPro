@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="app" id="appRoot">
+        <h1 class="title">这是一个模块标题</h1>
+        <p>React是一个非常不错的UI库，用于构建用户界面</p>
+    </div>
+    <script>
+        var obj = {
+            tag: "div",
+            attrs: { className: "app", id: "appRoot" },
+            children: [
+                {
+                    tag: "h1",
+                    attrs: { className: "title" },
+                    children: ["这是一个模块标题"]
+                },
+                {
+                    tag: "p",
+                    attrs: null,
+                    children: ["React是一个非常不错的UI库，用于构建用户界面"]
+                }
+            ]
+        }
+    </script>
+</body>
+
+</html>
