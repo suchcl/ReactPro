@@ -1,4 +1,8 @@
 import ReactDOM from "react-dom";
-import App from "./Nest";
+// 验证Fragment
+// import ClassSTyle from "./ClassStyle";
+// import App from "./Nest";
+// 父子组件
+import DataMount from "./components/DataMount";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<DataMount />, document.getElementById("root"));
