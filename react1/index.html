@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul,ol,li {
+            list-style: none;
+        }
+        #user li {
+            display: flex;
+            align-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <ul id="user"></ul>
+    <script>
+        let person = [
+            {
+                id:1,
+                name: "鹿晗",
+                age: 18
+            },
+            {
+                id: 2,
+                name: "李现",
+                age: 27
+            }
+        ];
+        let userHtml = "";
+        person.forEach((item) => {
+            userHtml += `<li><div class="id">${item.id}</div>-<div>${item.name}</div>-<div>${item.age}</div></li>`;
+        });
+        document.getElementById("user").innerHTML = userHtml;
+    </script>
+</body>
+</html>
