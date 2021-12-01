@@ -15,7 +15,11 @@
     <script src="../js/react-dom.development.js"></script>
     <script src="../js/babel.min.js"></script>
     <script type="text/babel">
-      const vd = <h1 id="jsx">使用JSX方式创建虚拟DOM</h1>;
+      const vd = (
+        <h1 id="jsx">
+          <span className="text">使用JSX方式创建虚拟DOM</span>
+        </h1>
+      );
       ReactDOM.render(vd, document.querySelector("#app"));
     </script>
   </body>
