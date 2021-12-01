@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使用js的方式创建虚拟DOM</title>
+  </head>
+  <body>
+    <!--创建react应用的容器-->
+    <div id="app"></div>
+
+    <!--引入react库，注意先后顺序：核心库、扩展库-->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <!--不需要引入转换工具了，因为babel的目标是把jsx转换成js，而现在我们直接使用js，所以不需要转换了-->
+    <!-- <script src="../js/babel.min.js"></script> -->
+
+    <!--type可以省略了，或者显示设置成text/javascript-->
+    <script type="text/javascript">
+      // 1. 以js的方式创建虚拟DOM
+
+      /**
+       * React.createElement()接收3各参数，分别为：
+       * 标签名  string
+       * 标签属性 object
+       * 标签内容 any
+       */
+      const vd = React.createElement("h1",{id: "js"},"以js的方式创建虚拟DOM");
+      // 2. 渲染虚拟DOM到页面
+      ReactDOM.render(vd,document.querySelector("#app"));
+    </script>
+  </body>
+</html>

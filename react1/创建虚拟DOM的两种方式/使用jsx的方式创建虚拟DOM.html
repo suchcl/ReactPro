@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--创建react应用的容器-->
+    <div id="app"></div>
+
+    <!--引入react库，注意引入顺序：核心库、扩展库、转换工具-->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script type="text/babel">
+      const vd = <h1 id="jsx">使用JSX方式创建虚拟DOM</h1>;
+      ReactDOM.render(vd, document.querySelector("#app"));
+    </script>
+  </body>
+</html>
