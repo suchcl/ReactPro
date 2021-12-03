@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ES6中的类</title>
+  </head>
+  <body>
+    <script>
+      class Person {
+        // 构造器函数
+        constructor(name, age) {
+          /**
+           * 构造函数中的this，指向当前这个类的实例对象
+           * 如我实例化一个对象 const p = new Person();那么这里的this就是p
+           */
+          this.name = name;
+          this.age = age;
+        }
+
+        play() {
+          /**
+           * 一般方法，定义在了类的原型对象上，供实例是使用
+           * 通过类Person的实例p1调用时，这里面的this就指的是p1，一般情况是这样
+           * 但是也有通过call、apply、bind更改this指向的情况，那个时候更改给了谁，this就是谁了
+           */
+          console.log("Playing football!");
+        }
+      }
+
+      /**
+       * 创建一个Student类，继承Person类
+       * ES6中通过extends实现类的继承
+       * 子类可以继承父类的属性、方法
+       */
+      class Student extends Person {
+        /**
+         * 子类需要添加和父类不同的年级grade属性，需要重新实现构造函数
+         * 子类中构造函数的参数，1要保证父类中构造函数参数的顺序，2添加子类的差异化参数，3通过super关键字实现对父类构造函数中初始化参数的调用
+         */
+        constructor(name, age, grade) {
+          /**
+           * super实现父类中方法的调用
+           * super的位置要在其他数据的初始化位置之前
+           */
+          super(name, age);
+          this.grade = grade;
+        }
+
+        /**
+         * 子类重写父类的方法
+         * 重写，就是重新实现父类中已经有的方法
+         */
+        play() {
+          console.log(`我叫${this.name},今年${this.age}岁了，在读${this.grade}年级！`);
+        }
+      }
+
+      const s = new Student("Hanmeimei", 16, "初三");
+      s.play(); // 我叫Hanmeimei,今年16岁了，在读初三年级！
+      console.log(s);
+
+      const p1 = new Person();
+      p1.play();
+      console.log(p1);
+
+      console.log("=============华丽的分割线=============");
+
+      function Dog(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      const d = new Dog();
+      console.log(d); // Dog {name: undefined, age: undefined}
+      const d2 = new Dog("旺财", 2);
+      console.log(d2); // Dog {name: '旺财', age: 2}
+    </script>
+  </body>
+</html>
