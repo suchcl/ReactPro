@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>原生js事件绑定</title>
+  </head>
+  <body>
+    <button id="btn1">按钮1</button>
+    <button id="btn2">按钮2</button>
+    <button onclick="fn3()">按钮3</button>
+    <script>
+      /**
+       * 原生js绑定事件常用的3种方法：
+       * 1. 通过addEventListener()方法绑定
+       * 2. 通过绑定onclick响应函数绑定
+       * 3. 直接在HTML元素上绑定响应事件
+       */
+      const btn1 = document.getElementById("btn1");
+      btn1.addEventListener("click", () => {
+        console.log("按钮1的点击事件执行了");
+      });
+
+      const btn2 = document.getElementById("btn2");
+      btn2.onclick = function () {
+        console.log("按钮2的点击事件执行了");
+      };
+
+      function fn3() {
+        console.log("按钮3的事件执行了");
+      }
+    </script>
+  </body>
+</html>
