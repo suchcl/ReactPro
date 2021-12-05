@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>this</title>
+  </head>
+  <body>
+    <!--btn1这种事件绑定形式，this绑定的是window-->
+    <button id="btn1" onclick="btnClick()">按钮</button>
+    <button id="btn2" data-user="Nicholas">按钮2</button>
+    <script>
+      function btnClick() {
+        console.log("按钮点击了");
+        console.log(this);
+      }
+
+      const btn2 = document.querySelector("#btn2");
+      btn2.onclick = function () {
+        console.log("按钮2点击了");
+        console.log(this);
+      };
+    </script>
+  </body>
+</html>

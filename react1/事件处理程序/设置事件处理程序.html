@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>设置事件处理程序</title>
+  </head>
+  <body>
+    <button id="btn1">按钮1</button>
+    <button id="btn2" onclick="var name='Nicholas Zakas';console.log(name);">
+      按钮2
+    </button>
+    <button
+      onclick="var name='Hanmeimei';
+    var age=18;
+    console.log(name);
+    console.log(age);"
+    >
+      按钮3
+    </button>
+    <script>
+      window.onload = function () {
+        console.log("文档已经全部加载完了");
+      };
+
+      const btn1 = document.querySelector("#btn1");
+      btn1.onclick = function () {
+        console.log("btn1触发了点击事件");
+      };
+    </script>
+  </body>
+</html>
