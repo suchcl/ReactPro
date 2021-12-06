@@ -18,68 +18,36 @@
     <script type="text/babel">
       // 创建组件
       class Weather extends React.Component {
-        // 构造器被执行几次呢？ ---- 一次
-        constructor(props) {
-          super(props);
-          // 初始化状态
-          this.state = {
-            isHot: true,
-            wind: "狂风",
-          };
-          // 改变this的指向，并通过bind生成新的事件处理程序
-          this.changeWeather = this.changeWeather.bind(this);
-        }
-        // render调用了几次呢？ ---- 1+n次，1是初始化的那次，n是状态更新的次数
+        // 初始化状态，直接给属性赋值
+        state = {
+          isHot: true,
+        };
+
         render() {
-          // return <h2>今天天气{this.state.isHot ? "炎热" : "凉爽"}</h2>;
-          // 读取状态
-          const { isHot, wind } = this.state;
+          const { isHot } = this.state;
           return (
-            // 这里onClick={changeWeather}调用的是构造函数中的this.changeWeather方法，也就是实例本身的方法，而不是原型上的changeWeather方法
-            // 如果构造函数中this.changeWeather改成了this.change,那么这里的事件处理程序也应该改成this.change
             <h2 onClick={this.changeWeather}>
-              今天天气{isHot ? "炎热" : "凉爽"},{wind}!
+              今天天气 {isHot ? "炎热" : "凉爽"}
             </h2>
           );
         }
 
-        // changeWeather执行了几次？ --- 页面事件点击了几次，就调用了几次
-        changeWeather() {
-          // changeWeather定义在了哪里呢？定义在了Weather的原型对象上，同Weather类的实例对象使用
-          // 由于changeWeather作为onClick的回调，所以不是通过实例调用的，是直接调用
-          // 类中方法内部默认开启了严格模式，所以changeWeather中的this为undefined
-
-          // 状态不能直接修改，所以这里的修改是无效的
-          // this.state.isHot = !this.state.isHot;  // 这行代码，是修改不了状态的
-
-          // 要修改状态，需要借助一个react内置的API：setState,且更新是一种合并动作，不是替换
-          // 比如这里我只修改了isHot的状态，那么wind的状态是不会被改变的
+        // 自定义方法
+        /**
+         * 主要需要注意changeWeather方法的上下文，即this的指向问题
+         * 期望是可以直接将this指向到类的实例对象，如果这里使用了箭头函数，则内部的this会直接找外部作用域
+         * 如果没有使用箭头函数，那么就需要在调用时重新绑定下this
+         */
+        changeWeather = () => {
           const isHot = this.state.isHot;
           this.setState({
             isHot: !isHot,
           });
-        }
+        };
       }
 
       // 渲染页面
       ReactDOM.render(<Weather />, document.querySelector("#app"));
-
-      // 测试下react中给元素绑定事件的方法
-      // 1. 通过addEventLisnter()给元素绑定事件
-      // const title = document.getElementById("title");
-      // title.addEventListener("click", function () {
-      //   console.log("标题1被点击了");
-      // });
-
-      // 2. 尝试通过onclick的方式给元素绑定事件
-      // title.onclick = function () {
-      //   console.log("标题2被点击了");
-      // };
-
-      // 3. 尝试通过直接给DOM元素绑定事件的方式，只需要定义一个函数就可以了
-      // function fnTitle() {
-      //   console.log("标题3被点击了");
-      // }
     </script>
   </body>
 </html>

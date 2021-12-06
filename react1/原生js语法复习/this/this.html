@@ -10,17 +10,28 @@
     <!--btn1这种事件绑定形式，this绑定的是window-->
     <button id="btn1" onclick="btnClick()">按钮</button>
     <button id="btn2" data-user="Nicholas">按钮2</button>
+    <button id="btn3">按钮3</button>
     <script>
-      function btnClick() {
+      function btnClick(event) {
+        console.log(event.type);
         console.log("按钮点击了");
         console.log(this);
       }
 
       const btn2 = document.querySelector("#btn2");
-      btn2.onclick = function () {
+      btn2.onclick = function (event) {
+        console.log("type:",event.type);
+        console.log("target:",event.target);
+        console.log("isTrusted:", event.isTrusted);
         console.log("按钮2点击了");
         console.log(this);
       };
+
+      const btn3 = document.querySelector("#btn3");
+      btn3.addEventListener("click", function () {
+        console.log("按钮3被点击了");
+        console.log(this);
+      });
     </script>
   </body>
 </html>
