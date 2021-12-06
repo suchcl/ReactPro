@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>展开运算符</title>
+  </head>
+  <body>
+    <script>
+      //   let arr = [1, 3, 5, 7, 9];
+      //   let arr2 = [2, 4, 6, 8, 10];
+      //   console.log("原数组：", arr); // (5) [1, 3, 5, 7, 9]
+      //   console.log("被展开之后的结果：", ...arr); // 1 3 5 7 9
+      //   let arr3 = [...arr, ...arr2];
+      //   console.log(arr3); // (10) [1, 3, 5, 7, 9, 2, 4, 6, 8, 10]
+
+      let obj = {
+        name: "Nicholas Zakas",
+        age: 18,
+        gender: "male",
+      };
+      let obj2 = { ...obj, name: "Hameimei", address: "太阳系地球村" };
+      console.log(obj2); // {name: 'Hameimei', age: 18, gender: 'male', address: '太阳系地球村'}
+    </script>
+  </body>
+</html>

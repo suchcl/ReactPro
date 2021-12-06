@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>props</title>
+  </head>
+  <body>
+    <!--react应用容器-->
+    <div id="app"></div>
+
+    <!--导入react库-->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+      // 创建组件
+      class User extends React.Component {
+        render() {
+          const { name, age, gender } = this.props;
+          return (
+            <div className="user">
+              <ul className="list">
+                <li>姓名：{name}</li>
+                <li>年龄：{age}</li>
+                <li>性别：{gender}</li>
+              </ul>
+            </div>
+          );
+        }
+      }
+      // 渲染组件到页面
+      const user = {
+        name: "Hanmeimei",
+        age: 18,
+        gender: "女",
+      };
+      console.log(...user);
+      ReactDOM.render(<User {...user} />, document.querySelector("#app"));
+      //   ReactDOM.render(
+      //     <User name="Nicholas Zakas" age="18" gender="男" />,
+      //     document.querySelector("#app")
+      //   );
+    </script>
+  </body>
+</html>
