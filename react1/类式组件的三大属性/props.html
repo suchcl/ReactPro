@@ -15,6 +15,9 @@
     <script src="../js/react-dom.development.js"></script>
     <script src="../js/babel.min.js"></script>
 
+    <!--导入prop-types.js，负责对react元素标签属性的类型限定-->
+    <script src="../js/prop-types.js"></script>
+
     <script type="text/babel">
       // 创建组件
       class User extends React.Component {
@@ -31,18 +34,39 @@
           );
         }
       }
+
+      // 对标签属性进行类型、必要性限制
+      User.propTypes = {
+        name: PropTypes.string.isRequired,
+        gender: PropTypes.string,
+        age: PropTypes.number,
+        play: PropTypes.func // 限制play为函数
+      };
+
+      // 指定标签默认的属性值
+      User.defaultProps = {
+        gender: "不详",
+        age: 16,
+      };
       // 渲染组件到页面
       const user = {
         name: "Hanmeimei",
         age: 18,
         gender: "女",
       };
-      console.log(...user);
-      ReactDOM.render(<User {...user} />, document.querySelector("#app"));
+      ReactDOM.render(
+        <User name="Nicholas Zakas" age={20} gender="男" play={play} />,
+        document.querySelector("#app")
+      );
+      //   ReactDOM.render(<User {...user} />, document.querySelector("#app"));
       //   ReactDOM.render(
       //     <User name="Nicholas Zakas" age="18" gender="男" />,
       //     document.querySelector("#app")
       //   );
+
+      function play(){
+          console.log("playing");
+      }
     </script>
   </body>
 </html>
