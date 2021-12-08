@@ -23,6 +23,8 @@
       class User extends React.Component {
         render() {
           const { name, age, gender } = this.props;
+          // props是只读的，不可改
+          // this.props.name = "Hameimei"; // 这行代码会报错，因为props中的name是只读的，readonly不可改
           return (
             <div className="user">
               <ul className="list">
