@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>类式组件中的构造器</title>
+  </head>
+  <body>
+    <!--react应用容器-->
+    <div id="app"></div>
+
+    <!--导入react核心库-->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/prop-types.js"></script>
+
+    <script type="text/babel">
+      class User extends React.Component {
+        // constructor(props) {
+        //   super(props);
+        //   this.state = {
+        //     isHot: true,
+        //     isLogin: true,
+        //   };
+        //   this.login = this.login.bind(this);
+        // }
+
+        state = {
+          isHot: true,
+          isLogin: false,
+        };
+        // 对属性、类型进行必要性限制
+        static propTypes = {
+          name: PropTypes.string.isRequired,
+          age: PropTypes.number,
+          gender: PropTypes.string,
+        };
+
+        static defaultProps = {
+          name: "Hanmeimei",
+          age: 16,
+          gender: "保密",
+        };
+
+        // login() {
+        //   console.log("登录了");
+        // }
+
+        login = () => {
+          console.log("登录了");
+        };
+
+        render() {
+          const { name, age, gender } = this.props;
+          return (
+            <div className="user">
+              <ul className="profile">
+                <li>姓名：{name}</li>
+                <li>年龄：{age}</li>
+                <li>性别：{gender}</li>
+              </ul>
+            </div>
+          );
+        }
+      }
+
+      const user = {
+        name: "Nicholas Zakas",
+        age: 18,
+        gender: "男",
+      };
+      ReactDOM.render(
+        <User name={user.name} age={user.age} gender={user.gender} />,
+        document.querySelector("#app")
+      );
+    </script>
+  </body>
+</html>

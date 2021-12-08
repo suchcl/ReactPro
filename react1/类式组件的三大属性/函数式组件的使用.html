@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>函数式组件使用props</title>
+  </head>
+  <body>
+    <!--定义react应用容器-->
+    <div id="app"></div>
+    <!--导入react核心库-->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/prop-types.js"></script>
+
+    <script type="text/babel">
+      function User(props) {
+        const { name, age, gender } = props;
+        return (
+          <div className="user">
+            <ul className="profile">
+              <li>姓名：{props.name}</li>
+              <li>年龄：{props.age}</li>
+              <li>性别：{props.gender}</li>
+            </ul>
+          </div>
+        );
+      }
+
+      User.propTypes = {
+        name: PropTypes.string.isRequired,
+        age: PropTypes.number,
+        gender: PropTypes.string,
+      };
+
+      User.defaultProps = {
+        name: "Hanmeimei",
+        age: 16,
+        gender: "保密",
+      };
+
+      const { name, age, gender } = {
+        name: "Nicholas Zakas",
+        age: 16,
+        gender: "男",
+      };
+
+      ReactDOM.render(
+        <User name={name} age={age} />,
+        document.querySelector("#app")
+      );
+    </script>
+  </body>
+</html>
