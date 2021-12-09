@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>refs</title>
+    <style>
+      .btn-area {
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!--创建react应用的容器-->
+    <div id="app"></div>
+    <!--导入react核心库-->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/prop-types.js"></script>
+    <script type="text/babel">
+      class User extends React.Component {
+        showData = () => {
+          // refs拿到的是真实的DOM，所以获取真实DOM中input的值的时候，还是通过value属性
+          console.log(this.refs.udata.value);
+        };
+
+        showMsg = () => {
+          // 解构拿到真实DOM umsg，然后获取umsg的value
+          const { umsg } = this.refs;
+          console.log(umsg.value);
+        };
+        render() {
+          return (
+            <div>
+              <div className="ipt">
+                <input ref="udata" type="text" placeholder="点击按钮提示数据" />
+              </div>
+              <div className="btn-area">
+                <button onClick={this.showData}>
+                  点击我提示左侧输入框的数据
+                </button>
+              </div>
+              <div className="ipt">
+                <input ref="umsg" onBlur={this.showMsg} type="text" placeholder="失去焦点提示数据" />
+              </div>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<User />, document.querySelector("#app"));
+    </script>
+  </body>
+</html>

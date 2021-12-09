@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>回调形式的refs</title>
+  </head>
+  <body>
+    <!--创建react应用容器-->
+    <div id="app"></div>
+
+    <!--导入react核心库-->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/prop-types.js"></script>
+
+    <script type="text/babel">
+      class User extends React.Component {
+        showData = () => {
+          // 因为udata实例属性，是在jsx中直接定义在this上的，所以这里接收的时候直接从this接收就可以了
+          // 这里的this指向组件实例
+          const { udata } = this;
+          console.log(udata.value);
+        };
+
+        showMsg = () => {
+          const { umsg } = this;
+          console.log(umsg.value);
+        };
+        render() {
+          return (
+            <div>
+              <input
+                // 定义一个箭头函数，箭头函数会获取当前元素作为默认参数传递给箭头函数的处理程序
+                // 箭头函数中，会声明一个实例属性，去接收当前元素
+                // 如本案例中，定义了一个udata的实例属性，去接收了当前的input元素
+                // 回调函数的参数名称，我们可以自定义，但是最好的实践是见名知义，这里的c表示current
+                ref={(c) => (this.udata = c)}
+                type="text"
+                placeholder="点击按钮提示数据"
+              />
+              <button onClick={this.showData}>
+                点击按钮提示左侧输入框的数据
+              </button>
+              <input
+                onBlur={this.showMsg}
+                ref={(c) => (this.umsg = c)}
+                type="text"
+                placeholder="失去焦点提示数据"
+              />
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<User />, document.querySelector("#app"));
+    </script>
+  </body>
+</html>
