@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>高阶函数—函数柯里化</title>
+  </head>
+  <body>
+    <!--react应用容器-->
+    <div id="app"></div>
+    <!--导入react核心库-->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script type="text/babel">
+      class Login extends React.Component {
+          /**
+           * 高阶函数定义
+           *    如果一个函数符合下面两个条件中的任何一个，那这个函数就是高阶函数
+           *        1. 若A函数，接收的参数是一个函数，那么A就可以称为高阶函数
+           *        2. 若A函数调用的返回值依然是一个函数，那么A就可以称之为高阶函数
+           * 常用的高阶函数有：Promise、setTimeout、setInterval、arr.map()等一些数组方法
+           * 
+           * 函数的柯里化：通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式 
+           */
+        state = {
+          username: "",
+          password: "",
+        };
+
+        // 保存密码到状态
+        // saveFromData就是一个高阶函数
+        saveFromData = (dataType) => {
+          return (event) => {
+            console.log(dataType, event.target.value);
+            this.setState({
+              // 注意[dataType]的方式是，这是读取变量属性的方式，对象的知识
+              // 直接使用：dataType:event.target.value是不行的，这种实现相当于直接给dataType属性赋值了，dataType并不是一个变量
+              [dataType]: event.target.value,
+            });
+          };
+        };
+
+        handleLogin = (event) => {
+          event.preventDefault();
+          console.log(this);
+          const { username, password } = this.state;
+          console.log(`用户名：${username},密码：${password}`);
+        };
+        render() {
+          return (
+            <form onSubmit={this.handleLogin}>
+              用户名：
+              <input
+                type="text"
+                onChange={this.saveFromData("username")}
+                name="uname"
+              />
+              密码：
+              <input type="password" onChange={this.saveFromData("password")} />
+              <button>登录</button>
+            </form>
+          );
+        }
+      }
+      ReactDOM.render(<Login />, document.querySelector("#app"));
+    </script>
+  </body>
+</html>
