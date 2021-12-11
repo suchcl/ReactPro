@@ -31,6 +31,7 @@
 
         // 保存密码到状态
         // saveFromData就是一个高阶函数
+        // 柯里化方式实现
         saveFromData = (dataType) => {
           return (event) => {
             console.log(dataType, event.target.value);
