@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>引出组件的声明周期</title>
+  </head>
+  <body>
+    <!--react应用容器-->
+    <div id="app"></div>
+
+    <!--导入react核心库-->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+      class User extends React.Component {
+        state = {
+          opacity: 1,
+        };
+
+        fadeOut = () => {
+          // 卸载组件之前，先清除下定时器
+          clearInterval(this.timer);
+          ReactDOM.unmountComponentAtNode(document.querySelector("#app"));
+        };
+
+        // 组件挂载完成后
+        componentDidMount() {
+          // 因为定时器中有修改状态，修改状态就会重新执行render，频繁的执行render，严重影响性能
+          // 将定时器挂载到实例对象的timer属性上
+          this.timer = setInterval(() => {
+            // 获取原始状态-原始的透明度
+            let { opacity } = this.state;
+
+            // 透明度每隔200ms减少0.1
+            opacity -= 0.1;
+
+            if (opacity <= 0) {
+              opacity = 1;
+            }
+            // 修改状态，改变透明度
+            this.setState({
+              opacity: opacity,
+            });
+          }, 200);
+        }
+
+        // 组件将要卸载的时候，即组件卸载前
+        componentWillUnmount() {}
+        render() {
+          return (
+            <div>
+              <p style={{ opacity: this.state.opacity }}>我是一些提示文字</p>
+              <button onClick={this.fadeOut}>观察渐隐效果</button>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<User />, document.querySelector("#app"));
+    </script>
+  </body>
+</html>
