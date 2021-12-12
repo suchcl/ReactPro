@@ -16,9 +16,16 @@
     <script src="../js/babel.min.js"></script>
     <script type="text/babel">
       class Counter extends React.Component {
-        state = {
-          count: 0,
-        };
+        constructor(props) {
+          console.log("constructor");
+          super(props);
+          this.state = {
+            count: 0,
+          };
+        }
+        // state = {
+        //   count: 0,
+        // };
 
         add = () => {
           let { count } = this.state;
@@ -26,12 +33,49 @@
             count: count + 1,
           });
         };
+
+        forceUpdateComponent = () => {
+          this.forceUpdate();
+        };
+
+        unmountComponent = () => {
+          ReactDOM.unmountComponentAtNode(document.querySelector("#app"));
+        };
+
+        componentWillMount() {
+          console.log("componentWillMount");
+        }
+
+        componentDidMount() {
+          console.log("componentDidMount");
+        }
+
+        componentWillUnmount() {
+          console.log("componentWillUnmount");
+        }
+
+        shouldComponentUpdate() {
+          // shouldComponentUpdate 钩子默认返回true，在不显示声明shouldComponentUpdate函数的情况下，都统一、默认返回true
+          // 但是只要显示的声明了shouldComponentUpdate，就必须显示的声明返回值，true or false，如果没有返回，则默认返回undefined
+          console.log("shoudeComponentUpdate");
+        }
+
+        componentWillUpdate() {
+          console.log("componentWillUpdate");
+        }
+
+        componentDidUpdate() {
+          console.log("componentDidUpdate");
+        }
         render() {
+          console.log("render");
           let { count } = this.state;
           return (
             <div>
               <h2>当前求和为: {count}</h2>
               <button onClick={this.add}>加1</button>
+              <button onClick={this.unmountComponent}>卸载组件</button>
+              <button onClick={this.forceUpdateComponent}>强制更新</button>
             </div>
           );
         }
