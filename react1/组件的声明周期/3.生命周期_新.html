@@ -42,10 +42,18 @@
           });
         };
 
-        componentWillMount() {
-          console.log("Counter---componentWillMount");
+        static getDerivedStateFromProps(props) {
+          console.log(props);
+          // return {count: 203};
+          // return props;
+          return null;
         }
 
+        getSnapshotBeforeUpdate() {
+          console.log("getSnapshotBeforeUpdate");
+          // return null;
+          return "Nicholas";
+        }
         componentDidMount() {
           console.log("Counter----componentDidMount");
         }
@@ -59,12 +67,8 @@
           return true;
         }
 
-        componentWillUpdate() {
-          console.log("Counter----componentWillUpdate");
-        }
-
-        componentDidUpdate() {
-          console.log("Counter ---- componentDidUpdate");
+        componentDidUpdate(preProps, preState, snapshotValue) {
+          console.log("Counter ---- componentDidUpdate", snapshotValue);
         }
         render() {
           console.log("Counter ---- render");
@@ -79,43 +83,7 @@
           );
         }
       }
-
-      class A extends React.Component {
-        state = {
-          carName: "奔驰",
-        };
-        changeCar = () => {
-          this.setState({
-            carName: "奥拓",
-          });
-        };
-        render() {
-          let { carName } = this.state;
-          return (
-            <div>
-              <h3>我是A组件</h3>
-              <button onClick={this.changeCar}>换车</button>
-              <B carName={carName} />
-            </div>
-          );
-        }
-      }
-
-      class B extends React.Component {
-        UNSAFE_componentWillReceiveProps() {
-          console.log("B----componentWillReceiveProps");
-        }
-        render() {
-          return (
-            <div>
-              <h3>我是B组件</h3>
-              <p>我接收了一辆{this.props.carName}汽车</p>
-            </div>
-          );
-        }
-      }
-
-      ReactDOM.render(<Counter />, document.querySelector("#app"));
+      ReactDOM.render(<Counter count={200} />, document.querySelector("#app"));
     </script>
   </body>
 </html>
