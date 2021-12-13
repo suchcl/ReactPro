@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生命周期_新</title>
+  </head>
+  <body>
+    <!--react应用容器-->
+    <div id="app"></div>
+    <!--导入react核心库-->
+    <script src="../js/v17.0.2/react.development.js"></script>
+    <script src="../js/v17.0.2//react-dom.development.js"></script>
+    <script src="../js/v17.0.2/babel.min.js"></script>
+    <script type="text/babel">
+      class Counter extends React.Component {
+        constructor(props) {
+          console.log("Counter---constructor");
+          super(props);
+          this.state = {
+            count: 0,
+          };
+        }
+
+        add = () => {
+          let { count } = this.state;
+          this.setState({
+            count: count + 1,
+          });
+        };
+
+        unMountComponent = () => {
+          ReactDOM.unmountComponentAtNode(document.querySelector("#app"));
+        };
+
+        updateComponentForce = () => {
+          let { count } = this.state;
+          this.forceUpdate();
+          this.setState({
+            count: count + 2,
+          });
+        };
+
+        componentWillMount() {
+          console.log("Counter---componentWillMount");
+        }
+
+        componentDidMount() {
+          console.log("Counter----componentDidMount");
+        }
+
+        componentWillUnmount() {
+          console.log("Counter ----- componentWillUnmount");
+        }
+
+        shouldComponentUpdate() {
+          console.log("Counter ----- shouldComponentUpdate");
+          return true;
+        }
+
+        componentWillUpdate() {
+          console.log("Counter----componentWillUpdate");
+        }
+
+        componentDidUpdate() {
+          console.log("Counter ---- componentDidUpdate");
+        }
+        render() {
+          console.log("Counter ---- render");
+          let { count } = this.state;
+          return (
+            <div>
+              <h2>当前求和为：{count}</h2>
+              <button onClick={this.add}>加1</button>
+              <button onClick={this.unMountComponent}>卸载组件</button>
+              <button onClick={this.updateComponentForce}>强制更新</button>
+            </div>
+          );
+        }
+      }
+
+      class A extends React.Component {
+        state = {
+          carName: "奔驰",
+        };
+        changeCar = () => {
+          this.setState({
+            carName: "奥拓",
+          });
+        };
+        render() {
+          let { carName } = this.state;
+          return (
+            <div>
+              <h3>我是A组件</h3>
+              <button onClick={this.changeCar}>换车</button>
+              <B carName={carName} />
+            </div>
+          );
+        }
+      }
+
+      class B extends React.Component {
+        UNSAFE_componentWillReceiveProps() {
+          console.log("B----componentWillReceiveProps");
+        }
+        render() {
+          return (
+            <div>
+              <h3>我是B组件</h3>
+              <p>我接收了一辆{this.props.carName}汽车</p>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<Counter />, document.querySelector("#app"));
+    </script>
+  </body>
+</html>
