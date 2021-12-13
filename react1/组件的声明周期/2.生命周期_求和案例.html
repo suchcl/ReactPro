@@ -11,8 +11,8 @@
     <div id="app"></div>
 
     <!--导入react核心库-->
-    <script src="../js/react.development.js"></script>
-    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/v16.14.0/react.development.js"></script>
+    <script src="../js/v16.14.0/react-dom.development.js"></script>
     <script src="../js/babel.min.js"></script>
     <script type="text/babel">
       class Counter extends React.Component {
@@ -58,6 +58,7 @@
           // shouldComponentUpdate 钩子默认返回true，在不显示声明shouldComponentUpdate函数的情况下，都统一、默认返回true
           // 但是只要显示的声明了shouldComponentUpdate，就必须显示的声明返回值，true or false，如果没有返回，则默认返回undefined
           console.log("shoudeComponentUpdate");
+          return true;
         }
 
         componentWillUpdate() {
@@ -80,7 +81,43 @@
           );
         }
       }
-      ReactDOM.render(<Counter />, document.querySelector("#app"));
+
+      class A extends React.Component {
+        // 初始化状态
+        state = {
+          carName: "奔驰",
+        };
+
+        changeCar = () => {
+          this.setState({
+            carName: "奥拓",
+          });
+        };
+        render() {
+          return (
+            <div>
+              <h3>我是A组件</h3>
+              <button onClick={this.changeCar}>换车</button>
+              <B carName={this.state.carName} />
+            </div>
+          );
+        }
+      }
+
+      class B extends React.Component {
+        componentWillReceiveProps(){
+          console.log("B---componentWillReceiveProps");
+        }
+        render() {
+          return (
+            <div>
+              <h3>我是B组件</h3>
+              <p>我接收到的车是: {this.props.carName}</p>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<A />, document.querySelector("#app"));
     </script>
   </body>
 </html>
