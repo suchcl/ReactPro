@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>scroll</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      ul,
+      li,
+      ol {
+        list-style: none;
+      }
+      .wrap {
+        padding: 50px 0 0 100px;
+      }
+      .list {
+        width: 200px;
+        height: 150px;
+        overflow-y: auto;
+      }
+      .item {
+        height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+        scrollTop  向上滚动
+        scrollHeight 当前元素容器高度
+    -->
+    <div class="wrap">
+      <ul class="list">
+        <li class="item">新闻7</li>
+        <li class="item">新闻6</li>
+        <li class="item">新闻5</li>
+        <li class="item">新闻4</li>
+        <li class="item">新闻3</li>
+        <li class="item">新闻2</li>
+        <li class="item">新闻1</li>
+      </ul>
+      <button id="btnScrollHeight">获取list容器高度</button>
+      <button id="btnScrollTop">列表上移</button>
+    </div>
+    <script>
+      const List = document.getElementsByClassName("list")[0];
+
+      const btnScrollHeight = document.querySelector("#btnScrollHeight");
+      const btnScrollTop = document.querySelector("#btnScrollTop");
+      
+      // 获取新闻列表容器高度
+      btnScrollHeight.addEventListener("click", function () {
+        const ListHeight = List.scrollHeight;
+        console.log(ListHeight);
+      });
+
+      // 新闻上移一个行的高度
+      btnScrollTop.addEventListener("click",function() {
+        List.scrollTop = 30;
+      });
+    </script>
+  </body>
+</html>
