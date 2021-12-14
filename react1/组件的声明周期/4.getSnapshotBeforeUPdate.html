@@ -51,6 +51,7 @@
           }, 1000);
         }
 
+        // getSnapshotBeforeUpdate的返回值，会传递给componentDidUpdate钩子函数
         getSnapshotBeforeUpdate() {
           return this.refs.list.scrollHeight;
         }

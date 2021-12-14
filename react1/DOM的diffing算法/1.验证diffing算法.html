@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--react应用容器-->
+    <div id="app"></div>
+    <!--导入react核心库-->
+    <script src="../js/v17.0.2/react.development.js"></script>
+    <script src="../js/v17.0.2/react-dom.development.js"></script>
+    <script src="../js/v17.0.2/babel.min.js"></script>
+    <script type="text/babel">
+      class Timer extends React.Component {
+        state = {
+          date: new Date(),
+        };
+
+        componentDidMount() {
+          this.timer = setInterval(() => {
+            this.setState({
+              date: new Date(),
+            });
+          }, 1000);
+        }
+        componentWillUnmount() {
+          clearInterval(this.timer);
+        }
+        render() {
+          return (
+            <div>
+              <h2>hello</h2>
+              <input type="text" />
+              <span>现在时间是：{this.state.date.toTimeString()}</span>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Timer />, document.querySelector("#app"));
+    </script>
+  </body>
+</html>
