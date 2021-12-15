@@ -1,0 +1,20 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App.js.bak';
+import reportWebVitals from './reportWebVitals';
+
+ReactDOM.render(
+  // React.StrictMode，开启react的严格模式，用来检查App组件及App组件的子组件的实现是否合理，和js中的严格模式没有任何关系
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// 用于记录页面性能的，监测性能
+// 框架帮我们记录了性能，那么这些性能怎么利用起来呢，需要再去研究、调研一下
+reportWebVitals();
