@@ -8,7 +8,7 @@ export default class App extends Component {
      * 我们在客户端配置了一个代理服务器，所以现在开发环境，本质上是在向本地的代理服务器发送请求，然后代理服务器给客户端提供数据
      * 只是代理服务器做了一些中间工作，它向服务器请求了数据，然后返回给了客户端使用
      */
-    axios.get("http://localhost:3000/student").then(
+    axios.get("http://localhost:3000/api/student").then(
       (res) => {
         console.log("学生数据请求成功了：", res.data);
       },
@@ -17,10 +17,23 @@ export default class App extends Component {
       }
     );
   };
+
+  getCarData = () => {
+    axios.get("http://localhost:3000/api2/cars").then(
+      (res) => {
+        console.log("汽车数据请求成功：", res.data);
+      },
+      (err) => {
+        console.log("请求失败:", err);
+      }
+    );
+  };
+
   render() {
     return (
       <div>
         <button onClick={this.getStudentData}>请求学生数据</button>
+        <button onClick={this.getCarData}>请求汽车数据</button>
       </div>
     );
   }
