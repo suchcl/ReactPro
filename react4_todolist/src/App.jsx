@@ -30,12 +30,27 @@ export default class App extends Component {
       },
     ],
   };
+
+  addTodo = (todo) => {
+    console.log("App:", todo);
+    // 获取源todos
+    const { todos } = this.state;
+    // 新增todo
+    const newTodo = [todo, ...todos];
+
+    // 更新状态
+    this.setState({
+      todos: newTodo,
+    });
+  };
   render() {
     const { todos } = this.state;
     return (
       <div className="todo-container">
         <div className="todo-wrap">
-          <Header />
+          {/* 父组件向子组件传递自定义函数 */}
+          <Header addTodoTask={this.addTodo} />
+          {/* 父组件将todos传递给子组件List，父组件向子组件传值 */}
           <List todos={todos} />
           <Footer />
         </div>
