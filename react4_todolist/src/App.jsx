@@ -5,6 +5,10 @@ import Footer from "./Footer/Footer";
 import "./App.css";
 
 export default class App extends Component {
+
+  // 状态在哪里，操作状态的方法就在哪里，如todos状态在App中，那么修改状态、添加状态的方法，都在App中
+
+
   // 初始化状态
   state = {
     todos: [
@@ -31,6 +35,7 @@ export default class App extends Component {
     ],
   };
 
+  // 添加任务
   addTodo = (todo) => {
     console.log("App:", todo);
     // 获取源todos
@@ -43,6 +48,25 @@ export default class App extends Component {
       todos: newTodo,
     });
   };
+
+  // 更新任务状态,传递给item组件，用于更新todo对象
+  udpateTodo = (id, done) => {
+    const { todos } = this.state;
+
+    // 处理更新数据
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, done };
+      } else {
+        return todo;
+      }
+    });
+
+    this.setState({
+      todos: newTodos,
+    });
+  };
+
   render() {
     const { todos } = this.state;
     return (
@@ -51,7 +75,7 @@ export default class App extends Component {
           {/* 父组件向子组件传递自定义函数 */}
           <Header addTodoTask={this.addTodo} />
           {/* 父组件将todos传递给子组件List，父组件向子组件传值 */}
-          <List todos={todos} />
+          <List todos={todos} updateTodo={this.udpateTodo} />
           <Footer />
         </div>
       </div>

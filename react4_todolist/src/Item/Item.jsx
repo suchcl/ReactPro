@@ -12,6 +12,13 @@ export default class Item extends Component {
       });
     };
   };
+
+  handleChecked = (id) => {
+    return (event) => {
+      const { updateTodo } = this.props;
+      updateTodo(id, event.target.checked);
+    };
+  };
   render() {
     // const { todo } = this.props;
     const { id, name, done } = this.props;
@@ -28,7 +35,11 @@ export default class Item extends Component {
                 不能使用checked，如果使用checked，则checkbox控件就会变成只读的了，就不能再被修改了   
                 使用defaultChecked隐藏了一个bug，后续再说吧
             */}
-          <input type="checkbox" defaultChecked={done} />
+          <input
+            type="checkbox"
+            defaultChecked={done}
+            onChange={this.handleChecked(id)}
+          />
           <span>{name}</span>
         </label>
         <button
