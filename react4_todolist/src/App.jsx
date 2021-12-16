@@ -5,9 +5,7 @@ import Footer from "./Footer/Footer";
 import "./App.css";
 
 export default class App extends Component {
-
   // 状态在哪里，操作状态的方法就在哪里，如todos状态在App中，那么修改状态、添加状态的方法，都在App中
-
 
   // 初始化状态
   state = {
@@ -67,6 +65,20 @@ export default class App extends Component {
     });
   };
 
+  // 删除任务
+  deleteTask = (id) => {
+    // 获取todos
+    const { todos } = this.state;
+    // 删除指定id的todo对象
+    const newTodos = todos.filter((todo) => {
+      return todo.id !== id;
+    });
+
+    // 更新状态
+    this.setState({
+      todos: newTodos,
+    });
+  };
   render() {
     const { todos } = this.state;
     return (
@@ -75,7 +87,11 @@ export default class App extends Component {
           {/* 父组件向子组件传递自定义函数 */}
           <Header addTodoTask={this.addTodo} />
           {/* 父组件将todos传递给子组件List，父组件向子组件传值 */}
-          <List todos={todos} updateTodo={this.udpateTodo} />
+          <List
+            todos={todos}
+            updateTodo={this.udpateTodo}
+            deleteTask={this.deleteTask}
+          />
           <Footer />
         </div>
       </div>
