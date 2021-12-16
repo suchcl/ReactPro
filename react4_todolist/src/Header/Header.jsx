@@ -1,9 +1,14 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 // 导入nanoid工具库，可以生成随机、唯一的字符串
 import { nanoid } from "nanoid";
 import "./Header.css";
 
 export default class Header extends Component {
+  // 对接收的prop进行类型、必要性的限制
+  static propsTypes = {
+    addTodo: PropTypes.func.isRequired,
+  };
   handleKeyUP = (event) => {
     const { keyCode, target } = event;
     if (keyCode !== 13) {
