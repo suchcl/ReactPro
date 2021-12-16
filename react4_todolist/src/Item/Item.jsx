@@ -2,11 +2,26 @@ import React, { Component } from "react";
 import "./Item.css";
 
 export default class Item extends Component {
+  state = {
+    isCurrentMouse: false,
+  };
+  handleMouse = (flag) => {
+    return () => {
+      this.setState({
+        isCurrentMouse: flag,
+      });
+    };
+  };
   render() {
     // const { todo } = this.props;
     const { id, name, done } = this.props;
+    const { isCurrentMouse } = this.state;
     return (
-      <li>
+      <li
+        onMouseEnter={this.handleMouse(true)}
+        onMouseLeave={this.handleMouse(false)}
+        style={{ backgroundColor: isCurrentMouse ? "#ddd" : "#fff" }}
+      >
         <label>
           {/* 
                 defaultChecked表示组件初始化时的状态，是应该选中还是不应该选中 
@@ -16,7 +31,10 @@ export default class Item extends Component {
           <input type="checkbox" defaultChecked={done} />
           <span>{name}</span>
         </label>
-        <button className="btn btn-danger" style={{ display: "none" }}>
+        <button
+          className="btn btn-danger"
+          style={{ display: isCurrentMouse ? "block" : "none" }}
+        >
           删除
         </button>
       </li>
