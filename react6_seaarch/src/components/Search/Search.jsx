@@ -13,7 +13,7 @@ export default class Search extends Component {
 
     // 发送网络请求，请求搜索的结果数据
     // 可以向github查询用户信息,api请求地址为：https://api.github.com/search/users?q=xxx   get请求
-    axios.get(`/api/search/users?q=${keyword}`).then(
+    axios.get(`/api/search/users2?q=${keyword}`).then(
       (response) => {
         console.log("请求成功了", response);
       },
