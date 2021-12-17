@@ -1,6 +1,6 @@
 const express = require("express");
-const request = require("request");
 const app = express();
+import axios from "axios";
 
 app.use((request, response, next) => {
     console.log("有人请求服务器3了");
@@ -99,13 +99,14 @@ app.get("/search/users", (request, response) => {
     response.send(users);
 });
 
-app.get("/search/users2", (req, res) => {
-    const keywords = request.query;
-    console.log(keywords);
-    const url = `https://api.github.com/search/users?q=${keywords}`;
-    request(url, function (err, response, body) {
-        res.send(body);
-    });
+app.get("/search/users", (req, res) => {
+    const { q } = req.query;
+    axios({
+        url: "https://api.github.com/search/users",
+        params: { q }
+    }).then(response => {
+        res.json(response.data);
+    })
 });
 
 app.listen(5000, (err) => {
