@@ -1,5 +1,5 @@
-const { response } = require("express");
 const express = require("express");
+const request = require("request");
 const app = express();
 
 app.use((request, response, next) => {
@@ -99,7 +99,14 @@ app.get("/search/users", (request, response) => {
     response.send(users);
 });
 
-app.get("");
+app.get("/search/users2", (req, res) => {
+    const keywords = request.query;
+    console.log(keywords);
+    const url = `https://api.github.com/search/users?q=${keywords}`;
+    request(url, function (err, response, body) {
+        res.send(body);
+    });
+});
 
 app.listen(5000, (err) => {
     if (!err) {
