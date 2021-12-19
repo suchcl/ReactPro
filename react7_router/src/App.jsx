@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import { Link, Route, Routes } from "react-router-dom";
-import About from "./components/About/About";
-import Home from "./components/Home/Home";
-
+// 2个路由组件
+import About from "./pages/About/About";
+import Home from "./pages/Home/Home";
+// 一个一般组件
+import Header from "./components/Header/Header";
 export default class App extends Component {
   render() {
     return (
       <div>
         <div className="row">
           <div className="col-xs-offset-2 col-xs-8">
-            <div className="page-header">
-              <h2>React Router Demo</h2>
-            </div>
+            {/* 一般组件：Header */}
+            <Header />
           </div>
         </div>
         <div className="row">
@@ -31,8 +32,9 @@ export default class App extends Component {
               <div className="panel-body">
                 {/* 注册路由 */}
                 <Routes>
+                  {/* 路由组件：About、Home */}
                   <Route path="/about" element={<About />} />
-                  <Route path="/home" element={<Home/>} />
+                  <Route path="/home" element={<Home />} />
                 </Routes>
               </div>
             </div>
