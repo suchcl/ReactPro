@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 // 2个路由组件
 import About from "./pages/About/About";
 import Home from "./pages/Home/Home";
+import Test from "./pages/Test/Test";
 // 一个一般组件
 import Header from "./components/Header/Header";
 import MyNavlink from "./components/MyNavlink/MyNavlink";
@@ -25,6 +26,7 @@ export default class App extends Component {
               <NavLink className={({ isActive }) => isActive ? "nav-item on" : "nav-item" } to="/home">Home </NavLink> */}
               <MyNavlink to="/about" title="About" a="1" b="2" c="3">About</MyNavlink>
               <MyNavlink to="/home" title="Home">Home</MyNavlink>
+              {/* <MyNavlink to="/test">Test</MyNavlink> */}
             </div>
           </div>
           <div className="col-xs-6">
@@ -35,6 +37,7 @@ export default class App extends Component {
                   {/* 路由组件：About、Home */}
                   <Route path="/about" element={<About />} />
                   <Route path="/home" element={<Home />} />
+                  <Route path="/home" element={<Test />} />
                 </Routes>
               </div>
             </div>
