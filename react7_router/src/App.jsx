@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { NavLink, Route, Routes } from "react-router-dom";
 // 2个路由组件
 import About from "./pages/About/About";
 import Home from "./pages/Home/Home";
 // 一个一般组件
 import Header from "./components/Header/Header";
+import "./App.css";
 export default class App extends Component {
   render() {
     return (
@@ -19,12 +20,8 @@ export default class App extends Component {
           <div className="col-xs-offset-2 col-xs-2">
             <div className="list-group">
               {/* 编写路由连接 */}
-              <Link className="list-group-item" to="/about">
-                关于
-              </Link>
-              <Link className="list-group-item" to="/home">
-                Home
-              </Link>
+              <NavLink className={({ isActive }) => isActive ? "nav-item on" : "nav-item" } to="/about">关于 </NavLink>
+              <NavLink className={({ isActive }) => isActive ? "nav-item on" : "nav-item" } to="/home">Home </NavLink>
             </div>
           </div>
           <div className="col-xs-6">

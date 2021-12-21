@@ -36,11 +36,3 @@
     transform: rotate(360deg);
   }
 }
-.nav-item {
-  display: block;
-  padding: 10px 15px;
-}
-.on {
-  background-color: #61dafb;
-  color: #fff;
-}
