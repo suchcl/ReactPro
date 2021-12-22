@@ -24,9 +24,11 @@ export default class App extends Component {
               {/* 编写路由连接 */}
               {/* <NavLink className={({ isActive }) => isActive ? "nav-item on" : "nav-item" } to="/about">关于 </NavLink>
               <NavLink className={({ isActive }) => isActive ? "nav-item on" : "nav-item" } to="/home">Home </NavLink> */}
-              <MyNavlink to="/about" title="About" a="1" b="2" c="3">About</MyNavlink>
-              <MyNavlink to="/home" title="Home">Home</MyNavlink>
+              {/* <MyNavlink to="/about" title="About" a="1" b="2" c="3">About</MyNavlink>
+              <MyNavlink to="/home" title="Home">Home</MyNavlink> */}
               {/* <MyNavlink to="/test">Test</MyNavlink> */}
+              <MyNavlink to="/test/about">About</MyNavlink>
+              <MyNavlink to="/test/home">Home</MyNavlink>
             </div>
           </div>
           <div className="col-xs-6">
@@ -35,9 +37,9 @@ export default class App extends Component {
                 {/* 注册路由 */}
                 <Routes>
                   {/* 路由组件：About、Home */}
-                  <Route path="/about" element={<About />} />
-                  <Route path="/home" element={<Home />} />
-                  <Route path="/home" element={<Test />} />
+                  <Route path="/test/about" element={<About />} />
+                  <Route path="/test/home" element={<Home />} />
+                  {/* <Route path="/home" element={<Test />} /> */}
                 </Routes>
               </div>
             </div>

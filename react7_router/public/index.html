@@ -9,7 +9,14 @@
       content="Web site created using create-react-app"
     />
     <title>React App</title>
+    <!-- link标签导入css文件的时候，使用相对路径是一种很不好的实践 -->
     <link rel="stylesheet" href="./bootstrap.min.css">
+
+    <!-- link标签导入css文件的时候，可以使用绝对路径 -->
+    <!-- <link rel="stylesheet" href="/bootstrap.min.css"> -->
+
+    <!-- link标签导入css文件的时候，推荐使用变量匹配 -->
+    <!-- <link rel="stylesheet" href="%PUBLIC_URL%/bootstrap.min.css"> -->
   </head>
   <body>
     <div id="root"></div>
