@@ -1,4 +1,4 @@
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Header from "./components/Header/Header";
 import MyNavlink from "./components/MyNavlink/MyNavlink";
 import Home from "./pages/Home/Home";
@@ -24,9 +24,11 @@ function App() {
           <div className="panel">
             <div className="panel-body">
               {/* 注册路由 */}
-              <Route path="/about" component={About} />
-              <Route path="/home" component={Home} />
-              <Redirect to="/about" />
+              <Switch>
+                <Route path="/about" component={About} />
+                <Route path="/home" component={Home} />
+                <Redirect to="/about" />
+              </Switch>
             </div>
           </div>
         </div>
