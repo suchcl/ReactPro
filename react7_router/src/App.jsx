@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes,Redirect } from "react-router-dom";
 // 2个路由组件
 import About from "./pages/About/About";
 import Home from "./pages/Home/Home";
