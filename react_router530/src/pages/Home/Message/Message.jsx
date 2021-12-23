@@ -19,6 +19,16 @@ export default class Message extends Component {
       },
     ],
   };
+
+  
+  replaceShowMsg = (id,title) => {
+    // 这就是编程式导航 params传参方式
+    this.props.history.replace(`/home/message/detail/${id}/${title}`);
+
+    // 编程式导航，state方式传参
+    // this.props.history.replace(`/home/message/detail/`,{id,title});
+  }
+
   render() {
     const { message } = this.state;
     return (
@@ -29,6 +39,7 @@ export default class Message extends Component {
               <li key={msg.id}>
                 {/* 向路由组件传递params参数 */}
                 <Link replace to={`/home/message/detail/${msg.id}/${msg.title}`}>{msg.title}</Link>
+                <button onClick={()=>{this.replaceShowMsg(msg.id,msg.title)}}>replace查看</button>
                 {/* 向路由组件传递search参数 */}
                 {/* <Link to={`/home/message/detail/?id=${msg.id}&title=${msg.title}`}>
                   {msg.title}
