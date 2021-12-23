@@ -28,7 +28,7 @@ export default class Message extends Component {
             return (
               <li key={msg.id}>
                 {/* 向路由组件传递params参数 */}
-                <Link to={`/home/message/detail/${msg.id}/${msg.title}`}>{msg.title}</Link>
+                <Link replace to={`/home/message/detail/${msg.id}/${msg.title}`}>{msg.title}</Link>
                 {/* 向路由组件传递search参数 */}
                 {/* <Link to={`/home/message/detail/?id=${msg.id}&title=${msg.title}`}>
                   {msg.title}
