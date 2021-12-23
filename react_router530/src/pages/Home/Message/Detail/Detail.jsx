@@ -35,13 +35,20 @@ export default class Detail extends Component {
     console.log(this.props);
     // 通过props方式接收params参数
     // 组件之间传值，基本上就是依赖props
-    // const { id, title } = this.props.match.params;
+    const { id, title } = this.props.match.params;
 
     // 接收search参数
-    const result = this.props.location.search;
-    const { id, title } = qs.parse(result.slice(1));
+    // const result = this.props.location.search;
+    // const { id, title } = qs.parse(result.slice(1));
 
-    // demo中是几条模拟的数据，实际开发中应该是从服务端下发的动态数据
+    // 接收state参数
+    // const {id,title} = this.props.location.state || {};
+
+    // 接收state参数时数据处理，demo中是几条模拟的数据，实际开发中应该是从服务端下发的动态数据
+    // const detail = DetailData.find((detailObj) => {
+    //     return detailObj.id === id;
+    // }) || {};
+
     const detail = DetailData.find((detailObj) => {
         return detailObj.id === id;
     });
