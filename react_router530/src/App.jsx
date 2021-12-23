@@ -23,6 +23,7 @@ function App() {
         <div className="col-xs-6">
           <div className="panel">
             <div className="panel-body">
+              {/* 父组件：App.jsx */}
               {/* 注册路由 */}
               <Switch>
                 <Route path="/about" component={About} />

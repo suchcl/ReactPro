@@ -19,6 +19,7 @@ export default class Home extends Component {
               <MyNavlink to="/home/message">Message</MyNavlink>
             </li>
           </ul>
+          {/* 子组件Home.jsx */}
           {/* 注册路由，路由的匹配顺序从父组件开始模糊匹配 */}
           <Switch>
             <Route path="/home/news" component={News} />
