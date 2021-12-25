@@ -5,9 +5,9 @@ import CountStyle from "./Count.module.css";
 
 export default class Count extends Component {
   // 状态交给redux管理了，所以组件内就不需要再维护一个state了
-  state = {
-    count: 0,
-  };
+  // state = {
+  //   count: 0,
+  // };
 
   // 组件多了，每个组件中的状态更新都需要在钩子函数中做一些处理
   // 可以把这部分的处理，直接放到入口文件index.js中
@@ -18,7 +18,6 @@ export default class Count extends Component {
   //   });
   // }
 
-  componentWillUnmount() {}
   // 加法
   increment = () => {
     const { value } = this.selectNumber;
@@ -65,7 +64,7 @@ export default class Count extends Component {
     }, 1000);
   };
   render() {
-    const { count } = this.state;
+    // const { count } = this.state;
     return (
       <div>
         <h3>当前求和为：{store.getState()}</h3>
