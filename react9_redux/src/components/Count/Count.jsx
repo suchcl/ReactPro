@@ -2,6 +2,11 @@ import React, { Component } from "react";
 // 导入store，用于获取redux中保存的状态
 import store from "../../redux/store";
 import CountStyle from "./Count.module.css";
+// 引入action，专门用于创建action对象
+import {
+  createIncrementAction,
+  createDecrementAction,
+} from "../../redux/count_action";
 
 export default class Count extends Component {
   // 状态交给redux管理了，所以组件内就不需要再维护一个state了
@@ -25,7 +30,10 @@ export default class Count extends Component {
     // this.setState({
     //   count: count + parseInt(value),
     // });
-    store.dispatch({ type: "increment", data: value * 1 });
+    // 代码内自己实现了action
+    // store.dispatch({ type: "increment", data: value * 1 });
+    // 下面的实现，可以直接调用action
+    store.dispatch(createIncrementAction(value * 1));
   };
 
   // 减法
@@ -35,7 +43,9 @@ export default class Count extends Component {
     // this.setState({
     //   count: count - value * 1,
     // });
-    store.dispatch({ type: "decrement", data: value * 1 });
+    // store.dispatch({ type: "decrement", data: value * 1 });
+    // 调用action
+    store.dispatch(createDecrementAction(value * 1));
   };
 
   // 当前求和为奇数再加
@@ -47,7 +57,9 @@ export default class Count extends Component {
       // this.setState({
       //   count: count + value * 1,
       // });
-      store.dispatch({ type: "increment", data: value * 1 });
+      // store.dispatch({ type: "increment", data: value * 1 }); // 代码自己实现了action
+      // 调用action
+      store.dispatch(createIncrementAction(value * 1));
     }
   };
 
@@ -60,7 +72,9 @@ export default class Count extends Component {
       // this.setState({
       //   count: count + value * 1,
       // });
-      store.dispatch({ type: "increment", data: value * 1 });
+      // store.dispatch({ type: "increment", data: value * 1 });
+      // 调用action
+      store.dispatch(createIncrementAction(value * 1));
     }, 1000);
   };
   render() {
