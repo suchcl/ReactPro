@@ -1,4 +1,4 @@
-import { DECREMENT, INCREMENT } from "./constant";
+import { DECREMENT, INCREMENT } from "../constant";
 
 // 同步action
 export const createIncrementAction = data => ({ type: INCREMENT, data });

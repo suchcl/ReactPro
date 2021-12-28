@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT } from "./constant";
+import { INCREMENT, DECREMENT } from "../constant";
 const initCounter = 10;
 function counterReducer(preState = initCounter, action) {
     const { type, data } = action;

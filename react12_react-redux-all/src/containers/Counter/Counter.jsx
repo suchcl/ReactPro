@@ -6,7 +6,7 @@ import {
   createIncrementAction,
   createDecrementAction,
   createIncrementActionAsync,
-} from "../../redux/couter_action";
+} from "../../redux/actions/couter";
 import CounterStyle from "./Counter.module.css";
 
 class Counter extends Component {
