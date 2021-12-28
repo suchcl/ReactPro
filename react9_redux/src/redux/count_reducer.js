@@ -5,7 +5,7 @@
 import { INCREMENT, DECREMENT } from "./constant";
 const initState = 130;
 function countReducer(preState = initState, action) {
-    console.log(action);
+    // console.log(action);
     // 初始化的时候，preState为undefined
     // 也可以不通过判断，而是直接给参数设置默认值的方式实现
     // if(preState === undefined){

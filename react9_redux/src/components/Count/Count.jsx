@@ -79,6 +79,7 @@ export default class Count extends Component {
   };
   render() {
     // const { count } = this.state;
+    console.log(store);
     return (
       <div>
         <h3>当前求和为：{store.getState()}</h3>

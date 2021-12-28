@@ -10,7 +10,7 @@ import countReducer from "./count_reducer";
 // 引入redux-thunk，用于支持异步action
 import thunk from "redux-thunk";
 
-const stroe = createStore(countReducer,applyMiddleware(thunk));
+const store = createStore(countReducer,applyMiddleware(thunk));
 
 // 暴露store
-export default stroe;
+export default store;
