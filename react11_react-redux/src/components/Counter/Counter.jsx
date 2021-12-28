@@ -7,6 +7,24 @@ export default class Counter extends Component {
     let data = value * 1;
     this.props.add(data);
   };
+
+  decrement = () => {
+    const { value } = this.selectNumber;
+    this.props.reduce(value * 1);
+  };
+
+  incrementIfOdd = () => {
+    const { value } = this.selectNumber;
+    const counter = this.props.counter;
+    if (counter % 2 !== 0) {
+      this.props.add(value * 1);
+    }
+  };
+
+  incrementAsync = () => {
+    const { value } = this.selectNumber;
+    this.props.addAsync(value * 1, 1000);
+  };
   render() {
     return (
       <div>

@@ -5,7 +5,11 @@ import CounterUI from "../../components/Counter/Counter";
 import { connect } from "react-redux";
 import { INCREMENT } from "../../redux/constant";
 
-import { createIncrementAction } from "../../redux/counter_action";
+import {
+  createDecrementAction,
+  createIncrementAction,
+  createIncrementActionAsync,
+} from "../../redux/counter_action";
 
 // mapStateToProps函数返回一个对象
 // 返回的对象中的key就作为传递给UI组件的props的key，value就作为传递给UI组件props的value
@@ -26,7 +30,33 @@ function mapDispatchToProps(dispatch) {
       // dispatch({type:INCREMENT,data}); // 直接实现一个action
       dispatch(createIncrementAction(data)); // 调用action
     },
+    reduce: (data) => {
+      dispatch(createDecrementAction(data));
+    },
+    addAsync: (data, time) => {
+      dispatch(createIncrementActionAsync(data, time));
+    },
   };
 }
 // 使用connect()()创建并暴露一个容器组件
-export default connect(mapStateToProps, mapDispatchToProps)(CounterUI);
+// export default connect(mapStateToProps, mapDispatchToProps)(CounterUI); // 也可以直接把函数参数拿到调用中来
+
+export default connect(
+  // mapStateToProps
+  (state) => ({ counter: state }),
+  // mapDispatyToProps
+  // 下面为一般的实现，即函数实现方式
+  //   (dispatch) => ({
+  //     add: (data) => dispatch(createIncrementAction(data)),
+  //     reduce: (data) => dispatch(createDecrementAction(data)),
+  //     addAsync: (data, time) => dispatch(createIncrementActionAsync(data, time)),
+  //   }),
+
+  //  mapDispatchToProps的精简写法
+  // 就是一个对象
+  {
+    add: createIncrementAction,
+    reduce: createDecrementAction,
+    addAsync: createIncrementActionAsync,
+  }
+)(CounterUI);
