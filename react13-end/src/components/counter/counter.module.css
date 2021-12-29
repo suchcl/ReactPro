@@ -1,0 +1,13 @@
+.btn {
+    border: 0;
+    margin: 0 10px;
+    padding: 4px 10px;
+}
+.btn:hover{
+    cursor: pointer;
+}
+.counter {
+    padding: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #999;
+}
