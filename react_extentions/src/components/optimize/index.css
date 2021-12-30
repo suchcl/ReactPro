@@ -1,0 +1,9 @@
+.parent {
+  background-color: wheat;
+  padding: 20px;
+}
+.child {
+  background-color: yellowgreen;
+  padding: 20px;
+  margin-top: 20px;
+}
