@@ -1,0 +1,12 @@
+.parent {
+  background-color: wheat;
+  padding: 20px;
+}
+.child {
+  background-color: thistle;
+  padding: 20px;
+}
+.grandson {
+  background-color: teal;
+  padding: 20px;
+}
