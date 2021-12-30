@@ -4,13 +4,14 @@ import React, { Component } from "react";
 // import HooksUI from "./components/hooks";
 // import ContextUI from "./components/context/Index";
 // import OptimizeUI from "./components/optimize/Index";
-import RenderProps from "./components/renderprops";
+// import RenderProps from "./components/renderprops";
+import ErrorBoundaries from './components/ErrorBoundaries';
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <RenderProps />
+        <ErrorBoundaries />
       </div>
     );
   }
