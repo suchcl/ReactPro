@@ -7,11 +7,12 @@ module.exports = {
     // 支持浏览器环境语法、变量
     browser: true,
   },
-  plugins: ["prettier"],
+  plugins: ["prettier", "jsx"],
   extends: [
     "eslint:recommended",
     "plugin:prettier/recommended",
     "plugin:react/recommended",
+    "prettier",
   ],
   // parser: "babel-eslint",
   parser: "@babel/eslint-parser",
@@ -23,10 +24,13 @@ module.exports = {
       jsx: true,
     },
     requireConfigFile: false,
+    babelOptions: {
+      presets: ["@babel/preset-react"],
+    },
   },
   rules: {
     "prettier/prettier": "error",
     // semi: "off",
-    "comma-dangle": [2, "never"],
+    "react/react-in-jsx-scope": "off",
   },
 };
