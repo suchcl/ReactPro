@@ -2,7 +2,7 @@ import React from 'react';
 
 function CountLabel({ count }) {
     // 子组件用于显示颜色
-    const textColor = count > 10 ? "red" : "orange";
+    const textColor = count > 4 ? "red" : "orange";
     return <span style={{ color: textColor }}>{count}</span>
 }
 
