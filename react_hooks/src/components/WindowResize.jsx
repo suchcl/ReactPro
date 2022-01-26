@@ -14,6 +14,8 @@ const useWindowSize = () => {
             setSize(getSize());
         }
         window.addEventListener("resize", handler);
+
+        // 返回一个函数，在组件销毁时调用
         return () => {
             window.removeEventListener("resize", handler);
         }
