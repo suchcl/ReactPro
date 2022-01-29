@@ -9,7 +9,6 @@ export default function UserListbyUseMemo() {
       // 组件首次加载时，请求用户数据
       const res = await fetch("https://reqres.in/api/users/");
       setUsers(await res.json());
-      console.log("users:", users);
     };
     doAsync();
   }, []);
@@ -17,9 +16,12 @@ export default function UserListbyUseMemo() {
 
   if (users) {
     // 无论任何原因的组件刷新，这里一定会对数组做一次过滤操作
-    usersToShow = users.data.filter((user) => {
-      return user.first_name.includes(searchKey)
-    });
+    // usersToShow = users.data.filter((user) => {
+    //   return user.first_name.includes(searchKey);
+    // });
+
+    // 这里有一个语法：就是如果箭头函数体只有一个返回语句，那么可以省略函数体的大括号和return关键字，以及语句结束的分号
+    usersToShow = users.data.filter(user => user.first_name.includes(searchKey));
   }
   return (
     <div>
