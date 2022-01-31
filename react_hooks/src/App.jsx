@@ -4,6 +4,7 @@ import WindowResize from './components/WindowResize';
 import Count from './components/Count';
 import Counter2 from './components/Counter2';
 import UserListbyUseMemo from './components/UserListbyUseMemo';
+import Timer from './components/Timer';
 import './App.css';
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
       <Counter2 />
       <h2>UserListbyUseMemo</h2>
       <UserListbyUseMemo />
+      <h2>Timer</h2>
+      <Timer />
     </div>
   );
 }
