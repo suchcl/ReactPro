@@ -9,6 +9,7 @@ import Timer from './components/Timer';
 import InputFocus from './components/InputFocus';
 import theme from "./assetes/data/theme.json";
 import ToolBar from "./components/UseContext";
+import BlogViewClass from "./components/BlogViewClass";
 import './App.css';
 
 // 创建一个theme的Context
@@ -31,6 +32,8 @@ function App() {
         <InputFocus />
         <h3>ToolBar</h3>
         <ToolBar />
+        <h2>BlogViewClass</h2>
+        <BlogViewClass />
       </div>
     </ThemeContext.Provider>
   );
