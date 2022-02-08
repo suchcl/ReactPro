@@ -11,6 +11,7 @@ import theme from "./assetes/data/theme.json";
 import ToolBar from "./components/UseContext";
 import Profile from "./components/Profile";
 import ConditionRender from "./components/ConditionRender";
+import PreventChild from "./components/PreventChild";
 import './App.css';
 
 // 创建一个theme的Context
@@ -39,6 +40,8 @@ function App() {
         <Profile />
         <h4>ConditionRender</h4>
         <ConditionRender />
+        <h4>PreventChild</h4>
+        <PreventChild />
       </div>
     </ThemeContext.Provider>
   );
