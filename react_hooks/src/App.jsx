@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./components/Header.tsx";
 import Counter from './components/Counter';
 import UserList from './components/UserList';
 import WindowResize from './components/WindowResize';
@@ -20,6 +21,7 @@ function App() {
   return (
     <ThemeContext.Provider value={theme.dark}>
       <div className="App">
+        <Header message="我是传递过来的信息" />
         <Counter />
         <UserList />
         <WindowResize />
